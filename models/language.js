@@ -1,0 +1,34 @@
+'use strict';
+const {
+  Model
+} = require('sequelize');
+module.exports = (sequelize, DataTypes) => {
+  class Language extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
+    static associate(models) {
+      // define association here
+      Language.belongsTo(models.Consultant, {
+        foreignKey: 'consultantID',
+        targetKey: 'id',
+      });
+      models.Consultant.hasMany(Language, {
+        foreignKey: 'consultantID',
+        sourceKey:'id',
+        onDelete: 'CASCADE'
+      });
+    }
+  }
+  Language.init({
+    name: DataTypes.STRING,
+    logo: DataTypes.STRING,
+    consultantID: DataTypes.INTEGER
+  }, {
+    sequelize,
+    modelName: 'Language',
+  });
+  return Language;
+};
