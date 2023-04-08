@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "postgres",
-    "password": "ridovic123",
-    "database": "jobApp-api",
+    "password": "tonystark",
+    "database": "jobAppDB",
     "host": "localhost",
     "dialect": "postgres",
     "pool": {
@@ -12,15 +12,12 @@
     }
   },
   "test": {
-    "username": "postgres",
-    "password": "ridovic123",
-    "database": "jobApp-api",
-    "host": "localhost",
+    "url":"postgres://jobsdb_pvw5_user:HWX61h12pKuhrsmlV0uSjCPsTUphp0BJ@dpg-cgokg85269v5rjc69chg-a.oregon-postgres.render.com/jobsdb_pvw5",
     "dialect": "postgres",
-    "pool": {
-      "max": 9,
-      "min": 0,
-      "idle": 10000
+    "dialectOptions":{
+      "ssl":{
+        "rejectUnauthorized": "false"
+      }
     }
   },
   "production": {

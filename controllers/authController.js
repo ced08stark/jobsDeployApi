@@ -1,11 +1,11 @@
 const models = require('../models');
+
 const validator = require('fastest-validator');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 
 function signUpEmployer(req, res){
-
     models.User.findOne({where:{email:req.body.email}}).then(result=>{
         if(result){
             res.status(409).json({
@@ -118,16 +118,33 @@ function signUpConsultant(req, res){
     })
 }
 
+async function getAll(req, res){
+   await models.User.findAll()
+      .then((data) =>{ 
+      if(data){
+        res.status(200).json(data);
+      }
+      else{
+        res.status(404).json({ message: "not found data" });
+      }
+      }
+      )
+      .catch((error) => {
+        res.status(500).json({
+          message: "Somthing went Wrong",
+          error: error,
+        });
+      });
+}
 
 
-function login(req, res){
 
-    models.User.findOne(
+async function login(req, res){
+   await models.User.findOne(
         {where:{email: req.body.email}}
-    ).then(
-        user=>{
-
+    ).then(user=>{
             if(user == null){
+                console.log(res)
                 res.status(401).json({
                     message:"User Doesn't exist"
                 });
@@ -152,7 +169,6 @@ function login(req, res){
                     }
                 })
             }
-
         }
     ).catch(
         error=>{
@@ -164,8 +180,9 @@ function login(req, res){
     );
 }
 
-module.exports ={
-    signUpEmployer:signUpEmployer,
-    signUpConsultant:signUpConsultant,
-    login:login
-}
+module.exports = {
+  signUpEmployer: signUpEmployer,
+  signUpConsultant: signUpConsultant,
+  login: login,
+  getAll: getAll
+};
