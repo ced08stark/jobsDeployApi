@@ -17,7 +17,7 @@ const sequelize = new Sequelize(`${config.url}?sslmode=no-verify`);
 // } else {
 //   sequelize = new Sequelize(config.database, config.username, config.password, config);
 // }
-//yy
+
 fs
   .readdirSync(__dirname)
   .filter(file => {

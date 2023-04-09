@@ -137,6 +137,24 @@ async function getAll(req, res){
       });
 }
 
+async function getUserById(req, res) {
+    const id = req.params.id
+     await models.User.findOne({ where: { id: id }})
+      .then((data) => {
+        if (data) {
+          res.status(200).json(data);
+        } else {
+          res.status(404).json({ message: "not found data" });
+        }
+      })
+      .catch((error) => {
+        res.status(500).json({
+          message: "Somthing went Wrong",
+          error: error,
+        });
+      });
+}
+
 
 
 async function login(req, res){
@@ -184,5 +202,6 @@ module.exports = {
   signUpEmployer: signUpEmployer,
   signUpConsultant: signUpConsultant,
   login: login,
-  getAll: getAll
+  getAll: getAll,
+  getUserById,
 };
