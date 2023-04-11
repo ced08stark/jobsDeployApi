@@ -4,6 +4,8 @@ const authController = require('../controllers/authController')
 const consultantController = require("../controllers/consultantController");
 const employerController = require("../controllers/EmployerController");
 const projetController = require("../controllers/projetController");
+const checkAuthMiddleware = require("../middleware/check-auth");
+
 
 
 /*  users listing. */
@@ -19,5 +21,16 @@ router.get("/user/:id", authController.getUserById)
 router.post("/projet", projetController.addProject)
 router.delete("/projet/:id", projetController.deleteProject);
 router.get("/projets", projetController.getAllProjet);
+
+router.get(
+  "/employer/profile",
+  checkAuthMiddleware.checkAuth,
+  authController.EmployerProfile
+);
+router.get(
+  "/consultant/profile",
+  checkAuthMiddleware.checkAuth,
+  authController.ConsultantProfile
+);
 
 module.exports = router;

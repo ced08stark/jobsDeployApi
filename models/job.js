@@ -22,17 +22,30 @@ module.exports = (sequelize, DataTypes) => {
       });
     }
   }
-  Job.init({
-    name: DataTypes.STRING,
-    description: DataTypes.STRING,
-    status: DataTypes.BOOLEAN,
-    type: DataTypes.STRING,
-    projetID: DataTypes.INTEGER,
-    logo: DataTypes.STRING,
-    livrable_date: DataTypes.DATE
-  }, {
-    sequelize,
-    modelName: 'Job',
-  });
+  Job.init(
+    {
+      name: DataTypes.STRING,
+      description: DataTypes.STRING,
+      status: DataTypes.BOOLEAN,
+      type: DataTypes.STRING,
+      projetID: DataTypes.INTEGER,
+      logo: DataTypes.STRING,
+      role: DataTypes.STRING,
+      experience: DataTypes.STRING,
+      skill: DataTypes.STRING,
+      certification: DataTypes.STRING,
+      langue: DataTypes.STRING,
+      isWorkTeam: DataTypes.BOOLEAN,
+      contratType: DataTypes.STRING,
+      workPreference: DataTypes.STRING,
+      delay: DataTypes.STRING,
+      file: DataTypes.STRING,
+      montant: DataTypes.DOUBLE
+    },
+    {
+      sequelize,
+      modelName: "Job",
+    }
+  );
   return Job;
 };

@@ -198,10 +198,85 @@ async function getUserById(req, res) {
     );
 }
 
+function EmployerProfile(req, res) {
+  models.User.findOne({
+    where: { id: req.userData.userId },
+    attributes: [
+      "first_name",
+      "last_name",
+      "email",
+      "profile",
+      "phone",
+      "gender",
+    ],
+  })
+    .then((resultU) => {
+      return models.Employer.findOne({
+        where: { userID: req.userData.userId },
+        attributes: ["role"],
+      })
+        .then((result) => {
+          res.status(200).json({
+            message: "Profile succes",
+            User: resultU,
+            employer: result,
+          });
+        })
+        .catch((error) => {
+          res.status(500).json({
+            message: "Somthing went Wrong",
+            error: error,
+          });
+        });
+    })
+    .catch((error) => {
+      res.status(500).json({
+        message: "Somthing went Wrong",
+        error: error,
+      });
+    });
+}
+
+function ConsultantProfile(req, res) {
+  models.User.findOne({
+    where: { id: req.userData.userId },
+    attributes: [
+      "first_name",
+      "last_name",
+      "email",
+      "profile",
+      "phone",
+      "gender",
+    ],
+    include: [
+      {
+        model: models.Consultant,
+        where: { userID: req.userData.userId },
+        attributes: ["id", "role", "pseudo", "remunaration"],
+      },
+    ],
+  })
+    .then((result) => {
+      res.status(200).json({
+        message: "Profile succes",
+        user: result,
+      });
+    })
+    .catch((error) => {
+      res.status(500).json({
+        message: "Somthing went Wrong",
+        error: error,
+      });
+    });
+}
+
+
 module.exports = {
   signUpEmployer: signUpEmployer,
   signUpConsultant: signUpConsultant,
   login: login,
   getAll: getAll,
-  getUserById,
+  EmployerProfile:EmployerProfile,
+  ConsultantProfile:ConsultantProfile,
+  getUserById
 };
