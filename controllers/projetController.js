@@ -243,11 +243,11 @@ function update(req, res) {
 
 function getAllJobs(req, res) {
   models.Job.findAll().then(
-    (result) => {
+    result => {
       if (result !== null) {
             res.status(200).json({
               message: "Projet succes",
-              Projet: result,
+              result,
             })
           .catch((error) => {
             res.status(500).json({
