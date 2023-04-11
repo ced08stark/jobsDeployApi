@@ -241,8 +241,8 @@ function update(req, res) {
 }
 
 
-function getAllJobs(req, res) {
-  models.Job.findAll().then(
+async function getAllJobs(req, res) {
+ await models.Job.findAll().then(
     result => {
       if (result !== null) {
             res.status(200).json({
