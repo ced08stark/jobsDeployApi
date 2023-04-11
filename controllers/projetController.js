@@ -271,7 +271,6 @@ function save_job(req, res) {
     description: req.body.description,
     type: req.body.type,
     livrable_date: req.body.livrable_date,
-    role: req.body.role,
     experience: req.body.description,
     skill: req.body.skill,
     certification: req.body.certification,

@@ -30,7 +30,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       projetID: DataTypes.INTEGER,
       logo: DataTypes.STRING,
-      role: DataTypes.STRING,
       experience: DataTypes.STRING,
       skill: DataTypes.STRING,
       certification: DataTypes.STRING,
