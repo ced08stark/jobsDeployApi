@@ -240,6 +240,30 @@ function update(req, res) {
     });
 }
 
+
+function getAllJobs(req, res) {
+  models.Job.findAll().then(
+    (result) => {
+      if (result !== null) {
+            res.status(200).json({
+              message: "Projet succes",
+              Projet: result,
+            })
+          .catch((error) => {
+            res.status(500).json({
+              message: "Somthing went Wrong",
+              error: error,
+            });
+          });
+      } else {
+        res.status(404).json({
+          message: "not projet found",
+        });
+      } 
+  })
+}
+
+
 function save_job(req, res) {
   const job = {
     name: req.body.name,
@@ -382,6 +406,7 @@ module.exports = {
   delete_job: delete_job,
   delete_jobs: delete_jobs,
   update_job: update_job,
+  getAllJobs,
 };
 
                  

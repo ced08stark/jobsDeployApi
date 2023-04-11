@@ -13,5 +13,9 @@ router.post('/projet/job/save/:id',checkAuthMiddleware.checkAuth,projetControlle
 router.delete('/job/delete/:id',checkAuthMiddleware.checkAuth,projetController.delete_job);
 router.delete('/projet/job/delete/:id',checkAuthMiddleware.checkAuth,projetController.delete_jobs);
 router.patch('/job/update/:id',checkAuthMiddleware.checkAuth,projetController.update_job);
+router.get(
+  "/projet/jobs",
+  projetController.getall
+);
 
 module.exports = router;
