@@ -264,7 +264,7 @@ async function getAllJobs(req, res) {
 }
 
 
-function save_job(req, res) {
+async function save_job(req, res) {
   const job = {
     name: req.body.name,
     logo: req.body.logo,
@@ -300,7 +300,7 @@ function save_job(req, res) {
     });
   }
 
-  return models.Job.create(job)
+  return await models.Job.create(job)
     .then((result) => {
       res.status(200).json({
         message: "Job created succes",
