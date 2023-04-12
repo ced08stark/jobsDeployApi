@@ -21,7 +21,8 @@ function signUpEmployer(req, res){
                         last_name: req.body.last_name,
                         profile: req.body.profile,
                         phone: req.body.phone,
-                        gender: req.body.gender
+                        gender: req.body.gender,
+                        role: req.body.role
                     }
                     models.User.create(user).then(
                         result => {
@@ -77,7 +78,8 @@ function signUpConsultant(req, res){
                         last_name: req.body.last_name,
                         profile: req.body.profile,
                         phone: req.body.phone,
-                        gender: req.body.gender
+                        gender: req.body.gender,
+                        role: req.body.role
                     }
                     models.User.create(user).then(
                         result => {
@@ -208,6 +210,7 @@ function EmployerProfile(req, res) {
       "profile",
       "phone",
       "gender",
+      "role",
     ],
   })
     .then((resultU) => {
@@ -247,6 +250,7 @@ function ConsultantProfile(req, res) {
       "profile",
       "phone",
       "gender",
+      "role",
     ],
     include: [
       {

@@ -27,6 +27,7 @@ router.get(
   checkAuthMiddleware.checkAuth,
   authController.EmployerProfile
 );
+
 router.get(
   "/consultant/profile",
   checkAuthMiddleware.checkAuth,
