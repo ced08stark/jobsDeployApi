@@ -34,12 +34,11 @@ module.exports = (sequelize, DataTypes) => {
       skill: DataTypes.STRING,
       certification: DataTypes.STRING,
       langue: DataTypes.STRING,
-      isWorkTeam: DataTypes.BOOLEAN,
       contratType: DataTypes.STRING,
       workPreference: DataTypes.STRING,
       delay: DataTypes.STRING,
       file: DataTypes.STRING,
-      montant: DataTypes.DOUBLE
+      montant: DataTypes.DOUBLE,
     },
     {
       sequelize,

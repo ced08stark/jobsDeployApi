@@ -50,10 +50,6 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING,
       },
-      isWorkTeam: {
-        allowNull: false,
-        type: Sequelize.STRING,
-      },
       contratType: {
         allowNull: false,
         type: Sequelize.STRING,

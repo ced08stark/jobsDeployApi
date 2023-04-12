@@ -241,8 +241,8 @@ function update(req, res) {
 }
 
 
-async function getAllJobs(req, res) {
- await models.Job.findAll().then(
+ function getAllJobs(req, res) {
+  models.Job.findAll().then(
     result => {
       if (result !== null) {
             res.status(200).json({
@@ -264,7 +264,8 @@ async function getAllJobs(req, res) {
 }
 
 
-async function save_job(req, res) {
+ async function save_job(req, res) {
+  console.log(req.body)
   const job = {
     name: req.body.name,
     logo: req.body.logo,
@@ -275,13 +276,12 @@ async function save_job(req, res) {
     skill: req.body.skill,
     certification: req.body.certification,
     langue: req.body.langue,
-    isWorkTeam: req.body.isWorkTeam,
     contratType: req.body.contratType,
     workPreference: req.body.workPreference,
     delay: req.body.delay,
     file: req.body.file,
     montant: req.body.montant,
-    projetID: req.params.id,
+    projetID: req.body.projetID
   };
   const schema = {
     name: { type: "string", optional: false, max: "500" },
@@ -300,11 +300,11 @@ async function save_job(req, res) {
     });
   }
 
-  return await models.Job.create(job)
+   await  models.Job.create(job)
     .then((result) => {
       res.status(200).json({
         message: "Job created succes",
-        result,
+        Job: result,
       });
     })
     .catch((error) => {
