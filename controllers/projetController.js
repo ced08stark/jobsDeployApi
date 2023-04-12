@@ -304,7 +304,7 @@ async function save_job(req, res) {
     .then((result) => {
       res.status(200).json({
         message: "Job created succes",
-        Job: result,
+        job: result,
       });
     })
     .catch((error) => {
