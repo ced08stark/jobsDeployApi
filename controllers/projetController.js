@@ -286,7 +286,7 @@ function update(req, res) {
   const schema = {
     name: { type: "string", optional: false, max: "500" },
     logo: { type: "string", optional: true, max: "2000" },
-    description: { type: "string", optional: false, max: "100" },
+    description: { type: "string", optional: false, max: "1000" },
     livrable_date: { type: "string", optional: false },
 
   };
