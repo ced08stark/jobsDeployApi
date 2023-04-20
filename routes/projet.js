@@ -6,6 +6,7 @@ const checkAuthMiddleware = require('../middleware/check-auth');
 /*  Compagny listing. */
 router.post('/projet/save',checkAuthMiddleware.checkAuth,projetController.save);
 router.get('/projet/all',checkAuthMiddleware.checkAuth,projetController.getall);
+router.get("/projet/jobs", projetController.getAllJobs);
 router.get(
   "/projet/:id",
   projetController.getProjetById
@@ -17,6 +18,6 @@ router.post('/projet/job/save',checkAuthMiddleware.checkAuth, projetController.s
 router.delete('/job/delete/:id',checkAuthMiddleware.checkAuth,projetController.delete_job);
 router.delete('/projet/job/delete/:id',checkAuthMiddleware.checkAuth,projetController.delete_jobs);
 router.patch('/job/update/:id',checkAuthMiddleware.checkAuth,projetController.update_job);
-router.get("/projet/jobs", projetController.getAllJobs);
+
 
 module.exports = router;

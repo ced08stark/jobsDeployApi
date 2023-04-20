@@ -273,7 +273,7 @@ function update(req, res) {
             })
           .catch((error) => {
             res.status(500).json({
-              message: "Somthing went Wrong",
+              message: "Somthing went Wrong uuuuuuuu",
               error: error,
             });
           });
@@ -427,7 +427,7 @@ module.exports = {
   delete_job: delete_job,
   delete_jobs: delete_jobs,
   update_job: update_job,
-  getAllJobs,
+  getAllJobs: getAllJobs,
   getProjetById,
 };
 
