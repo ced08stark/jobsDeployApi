@@ -268,7 +268,7 @@ function update(req, res) {
     result => {
       if (result !== null) {
             res.status(200).json({
-              message: "Projet succes",
+              message: "get jobs succes",
               result,
             })
           .catch((error) => {
@@ -279,7 +279,7 @@ function update(req, res) {
           });
       } else {
         res.status(404).json({
-          message: "not projet found",
+          message: "not job found",
         });
       } 
   })
