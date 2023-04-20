@@ -159,6 +159,8 @@ async function getUserById(req, res) {
 
 
 
+
+
  function login(req, res){
     models.User.findOne(
         {where:{email: req.body.email}}

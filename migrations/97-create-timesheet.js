@@ -3,49 +3,52 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Timesheets', {
+    await queryInterface.createTable("Timesheets", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       start_date: {
-        type: Sequelize.DATE
+        type: Sequelize.STRING,
       },
       end_date: {
-        type: Sequelize.DATE
+        type: Sequelize.STRING,
       },
       status: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.STRING,
       },
       jobID: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'Jobs',
-          key: 'id',
-          deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
-        }
+          model: "Jobs",
+          key: "id",
+          deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE,
+        },
       },
       consultantID: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'Consultants',
-          key: 'id',
-          deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
-        }
+          model: "Consultants",
+          key: "id",
+          deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE,
+        },
       },
       flag: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+      },
+      percent: {
+        type: Sequelize.INTEGER,
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
   },
   async down(queryInterface, Sequelize) {

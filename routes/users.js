@@ -16,6 +16,7 @@ router.get("/user", authController.getAll);
 router.get('/consultants', consultantController.getAllConsultant)
 router.get("/employers", employerController.getAllEmployer);
 router.get("/employer/:id", employerController.getEmployerById);
+router.get("/employerInfo/:id", employerController.getEmployer);
 router.post("/employer", employerController.getEmployerByUserId);
 router.get("/user/:id", authController.getUserById)
 router.post("/projet", projetController.addProject)

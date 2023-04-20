@@ -136,6 +136,28 @@ function getall(req, res) {
   );
 }
 
+
+function getProjetById(req, res) {
+ models.Projet.findOne({
+          where: { id: req.params.id },
+          attributes: ["id", "name", "logo", "description", "employerID"],
+        })
+          .then((result) => {
+            res.status(200).json({
+              message: "Projet succes",
+              Projet: result,
+            });
+          })
+          .catch((error) => {
+            res.status(500).json({
+              message: "Somthing went Wrong",
+              error: error,
+        });
+  });
+} 
+    
+
+
 function removeAll(req, res) {
   models.Employer.findOne({ where: { userID: req.userData.userId } }).then(
     (result) => {
@@ -406,6 +428,7 @@ module.exports = {
   delete_jobs: delete_jobs,
   update_job: update_job,
   getAllJobs,
+  getProjetById,
 };
 
                  

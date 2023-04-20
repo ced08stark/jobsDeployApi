@@ -31,16 +31,20 @@ module.exports = (sequelize, DataTypes) => {
       });
     }
   }
-  Timesheet.init({
-    start_date: DataTypes.DATE,
-    end_date: DataTypes.DATE,
-    status: DataTypes.BOOLEAN,
-    jobID: DataTypes.INTEGER,
-    consultantID: DataTypes.INTEGER,
-    flag: DataTypes.STRING
-  }, {
-    sequelize,
-    modelName: 'Timesheet',
-  });
+  Timesheet.init(
+    {
+      start_date: DataTypes.STRING,
+      end_date: DataTypes.STRING,
+      status: DataTypes.STRING,
+      jobID: DataTypes.INTEGER,
+      percent: DataTypes.INTEGER,
+      consultantID: DataTypes.INTEGER,
+      flag: DataTypes.STRING,
+    },
+    {
+      sequelize,
+      modelName: "Timesheet",
+    }
+  );
   return Timesheet;
 };

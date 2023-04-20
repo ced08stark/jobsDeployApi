@@ -6,6 +6,10 @@ const checkAuthMiddleware = require('../middleware/check-auth');
 /*  Compagny listing. */
 router.post('/projet/save',checkAuthMiddleware.checkAuth,projetController.save);
 router.get('/projet/all',checkAuthMiddleware.checkAuth,projetController.getall);
+router.get(
+  "/projet/:id",
+  projetController.getProjetById
+);
 router.patch('/projet/update/:id',checkAuthMiddleware.checkAuth,projetController.update);
 router.delete('/projet/delete/:id',checkAuthMiddleware.checkAuth,projetController.remove);
 router.delete('/projet/delete',checkAuthMiddleware.checkAuth,projetController.removeAll);

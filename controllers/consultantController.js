@@ -2,6 +2,48 @@ const models = require("../models");
 
 
 
+function getall(req, res) {
+  models.Employer.findOne({ where: { userID: req.userData.userId } }).then(
+    (result) => {
+      if (result !== null) {
+        return models.Compagny.findAll({
+          where: { employerID: result.id },
+          attributes: [
+            "id",
+            "name",
+            "logo",
+            "description",
+            "email",
+            "culture",
+            "industry_type",
+            "size",
+            "website",
+            "facebookLK",
+            "twitterLK",
+            "instagramLK",
+          ],
+        })
+          .then((result) => {
+            res.status(200).json({
+              message: "Compagnies succes",
+              Compagny: result,
+            });
+          })
+          .catch((error) => {
+            res.status(500).json({
+              message: "Somthing went Wrong",
+              error: error,
+            });
+          });
+      } else {
+        res.status(400).json({
+          message: "Invalide User ID",
+        });
+      }
+    }
+  );
+}
+
 const getAllConsultant = async (req, res) => {
   await models.Consultant.findAll()
     .then((data) => {
