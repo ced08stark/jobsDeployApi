@@ -9,7 +9,7 @@ router.post(
   checkAuthMiddleware.checkAuth,
   applicantController.save
 );
-router.get(
+router.post(
   "/applicant",
   applicantController.getApplicantByConsultant
 );
