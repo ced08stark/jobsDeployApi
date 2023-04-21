@@ -1,48 +1,25 @@
 const models = require("../models");
 
 
-
-function getall(req, res) {
-  models.Employer.findOne({ where: { userID: req.userData.userId } }).then(
-    (result) => {
-      if (result !== null) {
-        return models.Compagny.findAll({
-          where: { employerID: result.id },
-          attributes: [
-            "id",
-            "name",
-            "logo",
-            "description",
-            "email",
-            "culture",
-            "industry_type",
-            "size",
-            "website",
-            "facebookLK",
-            "twitterLK",
-            "instagramLK",
-          ],
-        })
-          .then((result) => {
-            res.status(200).json({
-              message: "Compagnies succes",
-              Compagny: result,
-            });
-          })
-          .catch((error) => {
-            res.status(500).json({
-              message: "Somthing went Wrong",
-              error: error,
-            });
-          });
+function getConsultantByUserId(req, res) {
+  models.Consultant.findOne({ where: { userID: req.body.userID } })
+    .then((data) => {
+      if (data) {
+        res.status(200).json(data);
       } else {
-        res.status(400).json({
-          message: "Invalide User ID",
-        });
+        res.status(404).json({ message: "not found data" });
       }
-    }
-  );
+    })
+    .catch((error) => {
+      res.status(500).json({
+        message: "Somthing went Wrong",
+        error: error,
+      });
+    });
 }
+
+
+
 
 const getAllConsultant = async (req, res) => {
   await models.Consultant.findAll()
@@ -1094,4 +1071,5 @@ module.exports = {
   removeEducation: removeEducation,
   removeEducations: removeEducations,
   Educations: Educations,
+  getConsultantByUserId: getConsultantByUserId
 };
