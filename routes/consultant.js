@@ -5,7 +5,7 @@ const checkAuthMiddleware = require('../middleware/check-auth');
 
 /*  Compagny listing. */
 
-router.get('/consultantInfo', consultantController.getConsultantByUserId)
+router.post('/consultantInfo', consultantController.getConsultantByUserId)
 
 router.post('/certification/save',checkAuthMiddleware.checkAuth,consultantController.saveCertification);
 router.get('/certification/all',checkAuthMiddleware.checkAuth,consultantController.Certifications);
