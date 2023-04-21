@@ -11,7 +11,6 @@ router.post(
 );
 router.get(
   "/applicant",
-  checkAuthMiddleware.checkAuth,
   applicantController.getApplicantByConsultant
 );
 
