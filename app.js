@@ -13,6 +13,7 @@ const compagnyRouter = require("./routes/compagny");
 const projetRouter = require("./routes/projet");
 const consultantRouter = require("./routes/consultant");
 const timeSheetRouter = require("./routes/timeSheet");
+const applicantRouter = require("./routes/applicant");
 
 const app = express();
 
@@ -28,6 +29,7 @@ app.use("/users", locationRouter);
 app.use("/users", compagnyRouter);
 app.use("/users", projetRouter);
 app.use("/users", timeSheetRouter);
+app.use("/users", applicantRouter)
 app.use("/users/consultant", consultantRouter);
 app.use(bodyParser.json());
 app.use('/uploads/documents', express.static('./uploads/documents'));

@@ -286,6 +286,30 @@ function update(req, res) {
 }
 
 
+ function getJobsById(req, res) {
+   models.Job.findOne({where: {id : req.params.id}}).then((result) => {
+     if (result !== null) {
+       res
+         .status(200)
+         .json({
+           message: "get jobs succes",
+           result,
+         })
+         .catch((error) => {
+           res.status(500).json({
+             message: "Somthing went Wrong uuuuuuuu",
+             error: error,
+           });
+         });
+     } else {
+       res.status(404).json({
+         message: "not job found",
+       });
+     }
+   });
+ }
+
+
  async function save_job(req, res) {
   console.log(req.body)
   const job = {
@@ -429,6 +453,7 @@ module.exports = {
   update_job: update_job,
   getAllJobs: getAllJobs,
   getProjetById,
+  getJobsById,
 };
 
                  
