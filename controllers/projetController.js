@@ -273,7 +273,7 @@ function update(req, res) {
             })
           .catch((error) => {
             res.status(500).json({
-              message: "Somthing went Wrong uuuuuuuu",
+              message: "Somthing went Wrong",
               error: error,
             });
           });
@@ -297,7 +297,7 @@ function update(req, res) {
          })
          .catch((error) => {
            res.status(500).json({
-             message: "Somthing went Wrong uuuuuuuu",
+             message: "Somthing went Wrong",
              error: error,
            });
          });

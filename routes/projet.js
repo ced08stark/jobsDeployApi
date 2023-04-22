@@ -11,9 +11,8 @@ router.get(
   "/projet/:id",
   projetController.getProjetById
 );
-router.delete(
+router.get(
   "/projet/job/:id",
-  checkAuthMiddleware.checkAuth,
   projetController.getJobsById
 );
 router.patch('/projet/update/:id',checkAuthMiddleware.checkAuth,projetController.update);
