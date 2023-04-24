@@ -27,4 +27,6 @@ router.post(
   timesheetController.getallByConsutant
 );
 
+router.post("/timesheets/task", timesheetController.getTimeSheetByApplie);
+
 module.exports = router;

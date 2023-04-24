@@ -114,7 +114,38 @@ function getallByConsutant(req, res) {
         error: error,
       });
     });
-} 
+}
+
+
+function getTimeSheetByApplie(req, res) {
+   models.Timesheet.findAll(
+     {
+       attributes: [
+         "id",
+         "start_date",
+         "end_date",
+         "status",
+         "jobID",
+         "percent",
+         "consultantID",
+         "flag",
+       ],
+     },
+     { where: { consultantID: req.body.consultantID, jobID: req.body.jobID } }
+   )
+     .then((result) => {
+       res.status(200).json({
+         message: "TimeSheet succes",
+         Timesheet: result,
+       });
+     })
+     .catch((error) => {
+       res.status(500).json({
+         message: "Somthing went Wrong",
+         error: error,
+       });
+     });
+}
 
 
 
@@ -123,4 +154,5 @@ module.exports = {
   update: update,
   getall: getall,
   getallByConsutant,
+  getTimeSheetByApplie,
 };
