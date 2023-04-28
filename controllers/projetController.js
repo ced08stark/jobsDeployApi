@@ -329,22 +329,22 @@ function update(req, res) {
     montant: req.body.montant,
     projetID: req.body.projetID
   };
-  // const schema = {
-  //   name: { type: "string", optional: false, max: "500" },
-  //   logo: { type: "string", optional: true, max: "2000" },
-  //   description: { type: "string", optional: false, max: "1000" },
-  //   livrable_date: { type: "string", optional: false },
+  const schema = {
+    name: { type: "string", optional: false, max: "500" },
+    logo: { type: "string", optional: true, max: "2000" },
+    description: { type: "string", optional: false, max: "10000" },
+    livrable_date: { type: "string", optional: false },
 
-  // };
-  //const v = new validator();
-  //const validationResponse = v.validate(job, schema);
+  };
+  const v = new validator();
+  const validationResponse = v.validate(job, schema);
 
-  // if (validationResponse !== true) {
-  //   return res.status(400).json({
-  //     message: "Validation failed",
-  //     error: validationResponse,
-  //   });
-  // }
+  if (validationResponse !== true) {
+    return res.status(400).json({
+      message: "Validation failed",
+      error: validationResponse,
+    });
+  }
 
    await  models.Job.create(job)
     .then((result) => {
