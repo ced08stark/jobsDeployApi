@@ -5,6 +5,10 @@ const logger = require('morgan');
 const bodyParser = require('body-parser');
 const createError = require('http-errors');
 const cors = require('cors')
+const app = express();
+
+
+
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -15,7 +19,7 @@ const consultantRouter = require("./routes/consultant");
 const timeSheetRouter = require("./routes/timeSheet");
 const applicantRouter = require("./routes/applicant");
 
-const app = express();
+
 
 app.use(logger('dev'));
 app.use(express.json());
