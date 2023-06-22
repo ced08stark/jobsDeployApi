@@ -35,7 +35,7 @@ const io = require("socket.io")(server, {
 
 
 /**
- * Listen on provided port, on all network interfaces.
+ * Listen on provided port, on all network 
  */
 io.on("connection", (socket) =>{
   socket.emit("me", socket.id)
