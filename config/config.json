@@ -12,7 +12,7 @@
     }
   },
   "test": {
-    "url":"postgres://jobsdb_pvw5_user:HWX61h12pKuhrsmlV0uSjCPsTUphp0BJ@dpg-cgokg85269v5rjc69chg-a.oregon-postgres.render.com/jobsdb_pvw5",
+    "url":"postgres://job_database_user:NasPRfI3GSEIRIpOV1QbymLP3Eo7vFLj@dpg-cilvlqenqqlfm4dml1d0-a.oregon-postgres.render.com/job_database",
     "dialect": "postgres",
     "dialectOptions":{
       "ssl":{
